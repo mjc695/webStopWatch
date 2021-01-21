@@ -15,12 +15,16 @@ function App() {
     if (!loggedIn){
       console.log('not logged in')
     }
+    if (loggedIn){
+      console.log('logged in')
+    }
+    
   })
 
   return (
     <div className="App">
         <Router>
-          <Routes />
+          <Routes loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
         </Router>
     </div>
   );

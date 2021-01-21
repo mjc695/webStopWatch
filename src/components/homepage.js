@@ -12,7 +12,7 @@ const Homepage = () =>{
             <div className='homepage=dashboard'>
                 Dashboard:
                 <Link to='/User'>User Page</Link>
-                <Link to='/User'>User Page</Link>
+                <Link to='/History'>History Page</Link>
                 
             </div>
         </div>
