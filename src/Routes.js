@@ -5,15 +5,14 @@ import Homepage from './components/homepage.js'
 import random from './components/random.js'
 import SignIn from './components/SignIn.js'
 
-const Routes = props => {
-    console.log('props in routes:', props)
+const Routes = () => {
 
     return(
         <div>
             <Switch>
                 <Route path='/google' component={random} />
                 <Route path='/homepage' component={Homepage} />
-                <Route path='/signIn' component={SignIn} props={props} />
+                <Route path='/signIn' component={SignIn} />
             </Switch>
         </div>
     )

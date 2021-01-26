@@ -5,26 +5,24 @@ import './App.css';
 
 import {auth} from './firebase/firebase.utils'
 import Routes from './Routes'
+import Navbar from './Navbar'
 
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(false)
-
   useEffect(()=>{
-    if (!loggedIn){
+    if (!window.localStorage.getItem('userInfo')){
       console.log('not logged in')
-    }
-    if (loggedIn){
+    } else {
       console.log('logged in')
     }
-    
   })
 
   return (
     <div className="App">
         <Router>
-          <Routes loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+          <Navbar />
+          <Routes />
         </Router>
     </div>
   );

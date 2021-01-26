@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import {auth} from '../firebase/firebase.utils'
 import FormInput from './formInput'
 
+import './SignIn.scss'
+
 function SignIn({loggedIn, setLoggedIn}){
     console.log(loggedIn, 'logged in')
 
@@ -21,8 +23,9 @@ function SignIn({loggedIn, setLoggedIn}){
     const handleSubmit = async event =>{
         event.preventDefault()
         try{
-            await auth.signInWithEmailAndPassword(email,password)
-            setLoggedIn(true)
+            const signedIn = await auth.signInWithEmailAndPassword(email,password)
+            window.localStorage.setItem('userInfo', true )
+            console.log('signed in:', signedIn)
         } catch(err){
             console.log(err)
         }
@@ -37,7 +40,7 @@ function SignIn({loggedIn, setLoggedIn}){
             <FormInput label='password' handleChange={handlePassword} />
             {/* <FormInput label='email' handleChange={handleemail} /> */}
             Sign In is above
-            <button type='submit' ></button>
+            <button type='submit' > Log In </button>
             </form>
         </div>
     )
