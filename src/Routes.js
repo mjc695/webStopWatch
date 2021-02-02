@@ -10,6 +10,7 @@ const Routes = () => {
     return(
         <div>
             <Switch>
+                <Route exact path ='/' component={Homepage} /> 
                 <Route path='/google' component={random} />
                 <Route path='/homepage' component={Homepage} />
                 <Route path='/signIn' component={SignIn} />
