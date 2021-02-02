@@ -4,8 +4,7 @@ import FormInput from './formInput'
 
 import './SignIn.scss'
 
-function SignIn({loggedIn, setLoggedIn}){
-    console.log(loggedIn, 'logged in')
+function SignIn(){
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -24,8 +23,9 @@ function SignIn({loggedIn, setLoggedIn}){
         event.preventDefault()
         try{
             const signedIn = await auth.signInWithEmailAndPassword(email,password)
-            window.localStorage.setItem('userInfo', true )
+            window.localStorage.setItem('userInfo', signedIn )
             console.log('signed in:', signedIn)
+            console.log('signed in via local storage:', window.localStorage.getItem('userInfo'))
         } catch(err){
             console.log(err)
         }

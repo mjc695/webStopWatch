@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const Navbar = () =>{
 
@@ -11,6 +12,7 @@ const Navbar = () =>{
         <div>
             Navbar
             <button type='submit' onClick={logout}> Logout </button>
+            <Link to='/signIn'>Sign In </Link>
         </div>
     )
 }
