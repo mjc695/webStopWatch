@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react'
+import {useHistory} from 'react-router-dom'
 import {auth} from '../firebase/firebase.utils'
 import FormInput from './formInput'
 
 import './SignIn.scss'
 
 function SignIn(){
+
+    const history = useHistory()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -26,6 +29,7 @@ function SignIn(){
             window.localStorage.setItem('userInfo', signedIn )
             console.log('signed in:', signedIn)
             console.log('signed in via local storage:', window.localStorage.getItem('userInfo'))
+            history.push('/homepage')
         } catch(err){
             console.log(err)
         }
