@@ -1,11 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
+import {connect} from 'react-redux'
+
 import {auth} from '../firebase/firebase.utils'
 import FormInput from './formInput'
 
 import './SignIn.scss'
+import { setCurrentUser } from '../redux.js/user/user.action'
 
-function SignIn(){
+function SignIn({setCurrentUser}){
+
+    // const {setCurrentUser} = this.props
 
     const history = useHistory()
 
@@ -22,9 +27,11 @@ function SignIn(){
         setPassword(event.target.value) 
     }
 
-    const handleSubmit = async event =>{
+    const handleSubmit = async (event) =>{
+        console.log('trying to submit')
         event.preventDefault()
         try{
+            // setCurrentUser(email,password)
             const signedIn = await auth.signInWithEmailAndPassword(email,password)
             window.localStorage.setItem('userInfo', signedIn )
             console.log('signed in:', signedIn)
@@ -50,4 +57,9 @@ function SignIn(){
     )
 }
 
-export default SignIn
+const mapState = null;
+const mapDispatch = dispatch => ({
+    setCurrentUser : (email, password) => dispatch(setCurrentUser(email,password))
+})
+
+export default connect(mapState,mapDispatch)(SignIn)

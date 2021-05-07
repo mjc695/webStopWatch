@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import {Link, useHistory} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-const Navbar = () =>{
+const Navbar = ({user}) =>{
+
+    // const {user} = this.props
 
     const history = useHistory()
 
     const [userInfo, setUserInfo] = useState()
     
     useEffect(()=>{
-        const userData = window.localStorage.getItem('userInfo')
+        console.log('user in nav', user)
+
+        const userData = window.localStorage.getItem('userInfo') || user
         if(userData){
             console.log('userData:', userData)
             setUserInfo(userData)
@@ -32,4 +37,8 @@ const Navbar = () =>{
     )
 }
 
-export default Navbar
+const mapState = state =>({
+    user: state.user.CurrentUser
+})
+
+export default connect(mapState,null)(Navbar)
